@@ -1,12 +1,24 @@
 import React from 'react';
+import {Container} from 'react-bootstrap'
+import Header from './components/Header';
+import Footer from './components/Footer';
+import HomeScreen from './screens/HomeScreen'
+
+
 
 // Arrow funtion (snippet: sfc)
-const  App = () => {
-  return ( 
+function App() {
+  return (
     <>
-      <h1>Bienvenido al testing sandbox</h1>
+      <Header></Header>
+      <main className='py-3'>
+        <Container>
+          <HomeScreen></HomeScreen>
+        </Container>
+      </main>
+      <Footer></Footer>
     </>
-   );
+  );
 }
  
 export default App;
