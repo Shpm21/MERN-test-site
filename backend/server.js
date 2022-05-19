@@ -5,7 +5,7 @@ const app = express()
 const port = 4000
 
 app.get('/', (req, res) => {
-    res.send('API is running...')
+    res.send('Hay respuesta del servidor 💁🏻‍♀️💅🏻 <br> API is running...')
 })
 app.get('/api/products', (req, res) => {
     res.json(products)
