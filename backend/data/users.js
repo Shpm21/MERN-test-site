@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs'
-// Acá hay en encriptar la clave del usuario
+// Acá hay que en encriptar la clave del usuario
 
 const users = [
 

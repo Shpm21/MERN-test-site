@@ -15,11 +15,31 @@ connectDB()
 const app = express()
 const PORT = process.env.PORT || 4000
 
+// middleware gestiona API y acá nos muestra las rutas por consola. Se puede comentar.
+//app.use((req, res, next) => {
+//    console.log(req.originalUrl)
+//    next()
+//})
 
 app.get('/', (req, res) => {
     res.send('Hay respuesta del servidor 💁🏻‍♀️💅🏻 <br> API is running...')
 })
 
 app.use('/api/products', productRoutes)
+
+// error mw
+app.use((err, req, res, next) => {
+    // envia el mensaje antes del error
+    // Si el error es 200, cambiar a 500, si no, mantener codigo de error
+    const statusCode = res.statusCode === 200 ? 500 : res.statusCode
+    res.status(statusCode)
+    // creamos el objeto con el mensaje
+    res.json({
+        message: `No existe un producto con ese id. ${err.message}`,
+
+        // si estamos en produccion, no va  a mostrar el stack del error
+        stack: process.env.NODE_ENV === 'production' ? null : err.stack,
+    })
+})
 
 app.listen(PORT, console.log(`💁🏻‍♀️💅🏻 API is running in ${process.env.NODE_ENV} mode on port ${PORT}`))
