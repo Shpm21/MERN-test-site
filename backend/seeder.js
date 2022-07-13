@@ -41,7 +41,7 @@ const destroyData = async () => {
         await Product.deleteMany()
         await User.deleteMany()
 
-        console.log('Data Destroyed!')
+        console.log('Datos en BD!')
         process.exit()
     } catch (error) {
         console.error(`${error}`)
@@ -51,6 +51,7 @@ const destroyData = async () => {
 
 if (process.argv[2] === '-d') {
     destroyData()
+    console.log('Datos eliminados de la  BD!')
 } else {
     importData()
 }
