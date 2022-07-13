@@ -7,7 +7,7 @@ import axios from 'axios'
 //import { listProductDetails } from '../actions/productActions'
 
 
-const ProductScreen = ({ history }) => {
+const ProductScreen = ({ }) => {
   const [qty, setQty] = useState(0)
   const { id } = useParams();
   const [product, setProduct] = useState({})
