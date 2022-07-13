@@ -13,7 +13,8 @@ router.get('/:id', asyncHandler(async (req, res) => {
     if (product) {
         res.json(product)
     } else {
-        res.status(404).json({ message: `No encontrado.` })
+        res.status(404)
+        throw new Error('Producto no encontrado.')
     }
 }))
 

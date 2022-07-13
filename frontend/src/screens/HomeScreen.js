@@ -1,10 +1,28 @@
-import React, { useState, useEffect } from 'react'
-import { Row, Col } from 'react-bootstrap'
-import Product from '../components/Product'
-import axios from 'axios'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { Row, Col } from 'react-bootstrap';
+import Product from '../components/Product';
+import { listProducts } from '../actions/productActions';
+//import axios from 'axios'
 
 
 const HomeScreen = () => {
+
+  const dispatch = useDispatch();
+  const productList = useSelector(state => state.productList)
+  const { products } = productList
+
+
+
+
+  useEffect(() => {
+    dispatch(listProducts());
+  }, [dispatch]);
+
+  //const products = []
+
+
+  /*
   const [products, setProducts] = useState([])
 
   useEffect(() => {
@@ -15,6 +33,7 @@ const HomeScreen = () => {
     }
     fetchProducts()
   }, [])
+  */
 
   return (
     <>

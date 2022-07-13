@@ -1,16 +1,12 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
-import { composeWithDevTools } from 'redux-devtools-extension'
+import { configureStore } from '@reduxjs/toolkit'
+import { productListReducer } from './reducers/productReducers'
 
-const reducer = combineReducers({})
 
-const initialState = {}
 
-const middleware = [thunk]
-
-const store = createStore(
-    reducer,
-    initialState,
-    composeWithDevTools(applyMiddleware(...middleware)))
+const store = configureStore({
+    reducer: { productList: productListReducer },
+    preloadedState: {},
+    devTools: process.env.NODE_ENV !== 'production', //only show devTools when in production
+})
 
 export default store
